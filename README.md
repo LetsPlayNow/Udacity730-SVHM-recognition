@@ -1,5 +1,4 @@
-# Udacity730-SVHM-recognition
-## Recognize house numbers with tensorflow
+# Recognize street view house numbers with tensorflow
 ![][svhn image]
 
 This is a final project for [Udacity 730 course (Deep Learning)][udacity course].
