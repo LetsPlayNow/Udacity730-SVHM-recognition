@@ -1,52 +1,45 @@
-# Recognize street view house numbers with tensorflow
+# House numbers recognition using CNN and Tensorflow
 ![][svhn image]
 
-This is a final project for [Udacity 730 course (Deep Learning)][udacity course].
-Aim is to create live app that can interpret number strings in real-world images.
+It is a final project for [Udacity 730 course (Deep Learning)][udacity course].  
+I was aiming to create a real-time app that can recognize numbers in real-world photos of home numbers.  
 
-I used [suggested approach][recognizer publication] from course creators.
-It's idea in building a bunch of simple digit classifiers on a top of CNN.
-Each of these classifiers should predict it's digit or `None`.
-Also 1 classifier for a length of digits sequence.
+I used [suggested approach][recognizer publication] from the Udacity course creators.   
+Its idea is to build a bunch of simple digit classifiers on top of CNN. 
 
-In my work there are 5 classifiers for digits and 1 for sequence length  
-based on a top of simple CNN, which structure idea I took from [here][mnist pros].
+Each of these classifiers should recognize a digit for its position or digit absence.   
+There is also an additional classifier for the length of the digits sequence.
+
+I used 5 classifiers for digits and 1 for sequence length  
+and borrowed some ideas about network structure for digit classifiers from [there][mnist].
 
 ## Work consists of 4 notebooks:
 ### 1 - MNIST CNN vs LReg.ipynb
-Walkthrough of Tensorflow tutorial which consists in two parts
+Analysis of Tensorflow tutorial and warm-up:  
 * https://www.tensorflow.org/get_started/mnist/beginners
 * https://www.tensorflow.org/get_started/mnist/pros
 
-This is a kind of warm-up.
-
 ### 2 - MNIST numbers recognizer.ipynb
-Create synthetic house numbers dataset from MNIST and train model on it.  
-I got medium quality on this dataset with my model. 
-
+Create a synthetic house numbers dataset from MNIST and train the model with it.  
+I got medium quality during this experiment. 
 
 ### 3 - SVHN dataset cracking.ipynb
 Official SVHN dataset stores information and labels in mat files,    
 which can be opened only with h5py library.  
 Retrieving information from them is a tricky thing.    
-And there is no much documentation about how to work with this library  
-or how structure of our file looks like.  
-
-So it's kind of a hacking.
+And there is not much documentation about how to work with this library  
+or what the structure of our file is.
 
 ### 4 - SVHN digit recognizer.ipynb
-Load and prepare images (resize, other) and labels.
-
-Train our model from 2-th notebook and ...
-get poor quality and very long training duration.
-This part isn't fully accomplished yet.
+- Load and prepare images (resize, crop) and labels.  
+- Train model from the 2nd notebook and ... get poor quality and very long training duration.  
+This part is uncompleted yet.
 
 Some ideas are:
-* Look more precisely into last FC layer. Reduce size of a vector in more soft manner.  
-In other way you loosing a lot of information.
-
-* Numbers in many cases are in the center of image and take small part of it.  
-Think how to adapt Convs and Poolings for it.
+* To look more accurately into the last FC layer. Maybe reduce the size of a vector more gradually.  
+Otherwise, we're losing a lot of information.
+* In many cases, numbers are in the center of an image and take only a small area.  
+We should think about how to adapt Convolutions and Poolings for it.
 
 [svhn image]: http://ufldl.stanford.edu/housenumbers/examples_new.png
 [udacity course]: https://classroom.udacity.com/courses/ud730/
